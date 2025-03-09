@@ -10,7 +10,8 @@ const apiKey = process.env.REACT_APP_GIPHY_API_KEY;
 
 function App() {
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState('cats'); // declare new state
+  const [query, setQuery] = useState('cats');
+  const [isLoading, setIsLoading] = useState(true);
 
   // update the query state
   const performSearch = (value) => setQuery(value);
@@ -22,7 +23,8 @@ function App() {
       .then((response) => setData(response.data.data))
       .catch((error) =>
         console.log('Error fetching and parsing data', error)
-      );
+      )
+      .finally(() => setIsLoading(false));
   }, [query]); // add the query dependency
 
   return (
@@ -34,8 +36,7 @@ function App() {
         </div>
       </div>
       <div className="main-content">
-        {/* pass down the data state */}
-        <GifList data={data} />
+        {isLoading ? <p>Loading...</p> : <GifList data={data} />}
       </div>
     </>
   );
