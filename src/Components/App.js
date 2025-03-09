@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 
@@ -6,6 +6,7 @@ import SearchForm from './SearchForm';
 import GifList from './GifList';
 
 function App() {
+  const [data, setData] = useState([]); // declare state
 
   return (
     <>
@@ -16,11 +17,11 @@ function App() {
         </div>
       </div>
       <div className="main-content">
-
+        {/* pass down the data state */}
+        <GifList data={data} />
       </div>
     </>
   );
 }
 
-export default App
-
+export default App;
