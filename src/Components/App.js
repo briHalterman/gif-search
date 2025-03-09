@@ -5,7 +5,7 @@ import axios from 'axios';
 import SearchForm from './SearchForm';
 import GifList from './GifList';
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_GIPHY_API_KEY;
 // console.log(apiKey);
 
 function App() {
